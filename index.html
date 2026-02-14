@@ -123,7 +123,7 @@
             align-items: center;
             text-align: center;
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+                        url('https:/.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
             position: relative;
             z-index: 1;
             perspective: 1000px;
@@ -563,7 +563,7 @@
         <button id="music-toggle" class="magnetic">♫</button>
         <audio id="bg-music" loop>
             <!-- GitHub: Standardizing lowercase paths -->
-            <source src="images/0214.mp3" type="audio/mpeg">
+            <source src="Code/images/0214.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -611,8 +611,8 @@
 
     <script>
         // --- GitHub Pages Optimization ---
-        // Placeholder for missing images to keep GitHub deployment pretty
-        const PLACEHOLDER_IMG = "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=60&w=600";
+        // Placeholder for missing Code/images/ to keep GitHub deployment pretty
+        const PLACEHOLDER_IMG = "https:/.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=60&w=600";
 
         // --- Core Interactivity ---
         const cursor = document.getElementById('custom-cursor');
@@ -654,15 +654,15 @@
 
         // --- Data Handling ---
         let memories = [
-            { title: "Unofficial First Date", date: "Dec 6, 2025", desc: "Initially, I didn't fully grasp your definition of a date, so I was 'testing the water'. Even if it felt a bit rushed, I loved every second because I was with you.", img: "images/1.jpeg" },
-            { title: "The First Date", date: "Dec 27, 2025", desc: "Walking through Kayutangan, ice cream, hidden cafes, and sudden kisses. I fall in love every time I look at you.", img: "images/2.jpeg" },
-            { title: "Coffee Date", date: "Jan 10, 2026", desc: "A cozy morning where the coffee was warm but your smile was warmer. You are the center of my labyrinth.", img: "images/3.jpeg" },
-            { title: "Beach Day", date: "Jan 27, 2026", desc: "I used to be indifferent to beaches, but now every grain of sand reminds me of you. Being by the sea with you is magic.", img: "images/4.jpeg" },
-            { title: "Spontaneous Moment", date: "Jan 12, 2026", desc: "Messy, unpredictable, and perfectly us.", img: "./code/images/5.jpeg" }
+            { title: "Unofficial First Date", date: "Dec 6, 2025", desc: "Initially, I didn't fully grasp your definition of a date, so I was 'testing the water'. Even if it felt a bit rushed, I loved every second because I was with you.", img: "Code/images/1.jpeg" },
+            { title: "The First Date", date: "Dec 27, 2025", desc: "Walking through Kayutangan, ice cream, hidden cafes, and sudden kisses. I fall in love every time I look at you.", img: "Code/images/2.jpeg" },
+            { title: "Coffee Date", date: "Jan 10, 2026", desc: "A cozy morning where the coffee was warm but your smile was warmer. You are the center of my labyrinth.", img: "Code/images/3.jpeg" },
+            { title: "Beach Day", date: "Jan 27, 2026", desc: "I used to be indifferent to beaches, but now every grain of sand reminds me of you. Being by the sea with you is magic.", img: "Code/images/4.jpeg" },
+            { title: "Spontaneous Moment", date: "Jan 12, 2026", desc: "Messy, unpredictable, and perfectly us.", img: "Code/images/5.jpeg" }
         ];
 
-        // --- Generate Gallery (80 images) ---
-        let galleryImages = [];
+        // --- Generate Gallery (80 Code/images/) ---
+        let galleryCode/images/ = [];
         function getAlphaCode(n) {
             let code = "";
             while (n > 0) {
@@ -675,10 +675,10 @@
 
         for (let i = 1; i <= 80; i++) {
             let code = getAlphaCode(i);
-            galleryImages.push({
+            galleryCode/images/.push({
                 title: `Moment #${i}`,
                 date: "Forever",
-                img: `images/${code}.jpeg` // Relative path, no dots, standard casing
+                img: `Code/images/${code}.jpeg` // Relative path, no dots, standard casing
             });
         }
 
@@ -713,14 +713,14 @@
 
         function populateGallery() {
             track.innerHTML = '';
-            const tripleData = [...galleryImages, ...galleryImages, ...galleryImages];
+            const tripleData = [...galleryCode/images/, ...galleryCode/images/, ...galleryCode/images/];
             tripleData.forEach(img => {
                 const item = document.createElement('div'); item.className = 'gallery-item';
                 item.onclick = () => openModal(img);
                 item.innerHTML = `<img src="${img.img}" onerror="this.src='${PLACEHOLDER_IMG}'"><div class="gallery-overlay"><h3>${img.title}</h3></div>`;
                 track.appendChild(item);
             });
-            viewport.scrollLeft = galleryImages.length * itemWidth;
+            viewport.scrollLeft = galleryCode/images/.length * itemWidth;
         }
 
         function populateNotes() {
@@ -761,7 +761,7 @@
                 date: document.getElementById('new-date').value,
                 img: document.getElementById('new-img-url').value
             };
-            galleryImages.unshift(newMem); populateGallery();
+            galleryCode/images/.unshift(newMem); populateGallery();
             document.getElementById('add-modal').style.display = 'none';
         };
 
@@ -770,8 +770,8 @@
         document.getElementById('prev-btn').onclick = () => viewport.scrollBy({ left: -itemWidth, behavior: 'smooth' });
         viewport.addEventListener('scroll', () => {
             const max = viewport.scrollWidth - viewport.clientWidth;
-            if (viewport.scrollLeft >= max - 5) viewport.scrollLeft -= (galleryImages.length * itemWidth);
-            else if (viewport.scrollLeft <= 5) viewport.scrollLeft += (galleryImages.length * itemWidth);
+            if (viewport.scrollLeft >= max - 5) viewport.scrollLeft -= (galleryCode/images/.length * itemWidth);
+            else if (viewport.scrollLeft <= 5) viewport.scrollLeft += (galleryCode/images/.length * itemWidth);
         });
 
         // --- Background Hearts ---
