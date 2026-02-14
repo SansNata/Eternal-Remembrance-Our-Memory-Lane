@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Remembrance | Our Memory Lane</title>
-    <link rel="icon" type="image/png" href="./favicon.png">
+    
+    <!-- GitHub Compatibility: Standardizing Favicon path -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #050505;
@@ -20,7 +24,6 @@
             --transition-speed: 0.6s;
         }
 
-        /* Standardized reset for cross-browser compatibility on GitHub Pages */
         * {
             margin: 0;
             padding: 0;
@@ -34,7 +37,7 @@
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
-            cursor: none; /* Custom cursor is handled by JS */
+            cursor: none; /* Custom cursor handling */
         }
 
         h1, h2, h3 {
@@ -119,8 +122,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Overlay helps text readability on GitHub mobile browsers */
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
                         url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
             position: relative;
             z-index: 1;
@@ -255,12 +257,6 @@
             transition: 0.3s ease;
         }
 
-        .timeline-item:hover .timeline-node {
-            transform: translateX(-50%) scale(1.3);
-            background: var(--accent-bright);
-            color: white;
-        }
-
         /* --- Gallery Slider --- */
         .gallery-section {
             padding: 100px 0;
@@ -346,32 +342,6 @@
             padding: 20px;
             opacity: 0;
             transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .nav-btn {
-            background: var(--accent-vibrant);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
         }
 
         /* --- Notes Section --- */
@@ -501,37 +471,6 @@
             z-index: 1001;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--accent-bright);
-            font-weight: 600;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: white;
-            font-family: inherit;
-        }
-        .submit-btn {
-            background: var(--accent-vibrant);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            transition: 0.3s;
-        }
-
         /* --- Music Player --- */
         .music-player {
             position: fixed;
@@ -564,7 +503,6 @@
             position: relative;
         }
 
-        /* Responsive Fixes for GitHub mobile views */
         @media (max-width: 768px) {
             body { cursor: auto; }
             #custom-cursor { display: none; }
@@ -616,7 +554,6 @@
 
     <section class="notes-section">
         <h2>Heartfelt Notes</h2>
-        <p style="opacity: 0.8;">A few of my favorite things you've ever said...</p>
         <div class="notes-grid" id="notes-grid">
             <!-- Notes populated by JS -->
         </div>
@@ -625,12 +562,12 @@
     <div class="music-player">
         <button id="music-toggle" class="magnetic">♫</button>
         <audio id="bg-music" loop>
-            <!-- GitHub Pages Tip: Use relative paths for local assets in your repo -->
-            <source src="./images/0214.MP3" type="audio/mpeg">
+            <!-- GitHub: Standardizing lowercase paths -->
+            <source src="images/0214.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- Photo Modal -->
+    <!-- Modals -->
     <div class="modal" id="modal">
         <button class="modal-close" id="modal-close">&times;</button>
         <div class="modal-content">
@@ -643,26 +580,25 @@
         </div>
     </div>
 
-    <!-- Add Memory Modal -->
     <div class="modal" id="add-modal">
         <button class="modal-close" id="add-modal-close">&times;</button>
         <div class="modal-content" style="max-width: 500px;">
             <div class="modal-body">
                 <h2 style="margin-bottom: 20px; text-align: center;">New Memory</h2>
                 <form id="add-memory-form">
-                    <div class="form-group">
-                        <label>Image URL</label>
-                        <input type="url" id="new-img-url" placeholder="https://..." required>
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block;color:var(--accent-bright);font-weight:600;">Image URL</label>
+                        <input type="url" id="new-img-url" style="width:100%;padding:10px;background:#2a2a2a;color:white;border:1px solid #444;" required>
                     </div>
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" id="new-title" placeholder="e.g. First Picnic" required>
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block;color:var(--accent-bright);font-weight:600;">Title</label>
+                        <input type="text" id="new-title" style="width:100%;padding:10px;background:#2a2a2a;color:white;border:1px solid #444;" required>
                     </div>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="text" id="new-date" placeholder="e.g. Feb 2026" required>
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block;color:var(--accent-bright);font-weight:600;">Date</label>
+                        <input type="text" id="new-date" style="width:100%;padding:10px;background:#2a2a2a;color:white;border:1px solid #444;" required>
                     </div>
-                    <button type="submit" class="submit-btn magnetic">Save Memory</button>
+                    <button type="submit" class="submit-btn magnetic" style="width:100%;">Save Memory</button>
                 </form>
             </div>
         </div>
@@ -674,13 +610,9 @@
     </footer>
 
     <script>
-        /**
-         * PRODUCTION TIPS FOR GITHUB:
-         * 1. Ensure your folder name is exactly "images" (lowercase).
-         * 2. GitHub Pages is case-sensitive: "1.jpeg" is NOT "1.JPEG".
-         * 3. The fallback placeholder URL ensures the site looks good even before images are uploaded.
-         */
-        const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=60&w=600";
+        // --- GitHub Pages Optimization ---
+        // Placeholder for missing images to keep GitHub deployment pretty
+        const PLACEHOLDER_IMG = "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=60&w=600";
 
         // --- Core Interactivity ---
         const cursor = document.getElementById('custom-cursor');
@@ -720,16 +652,16 @@
             progressBar.style.width = (winScroll / height) * 100 + "%";
         };
 
-        // --- Data ---
+        // --- Data Handling ---
         let memories = [
-            { title: "Unofficial First Date", date: "Dec 6, 2025", desc: "At first I don't understand what your definition of date is, so I just like testing the water so that I would know what you meant by a date is, and I know at first it feels like so unprepared especially when we know what happens with Erica, it's so quick too right? Like one or two hours, otherwise, I enjoy it cause I can spend my time with precious you ^^.", img: "./images/1.jpeg" },
-            { title: "The First Date", date: "Dec 27, 2025", desc: "I would always remember our first date where we strolling aroun Kayutangan, we walk around, getting an ice cream, find some hidden cafe, talking and relaxing, take a photobox, sudden kisses, etc. All of those recorded perfectly in my memory. Also I want you to know that I fell in love everytime I look at you that time", img: "./images/2.jpeg" },
-            { title: "Coffee Date", date: "Jan 10, 2026", desc: "The cold ambience is nothing against your warm smile. I love us when we're like this! It's all sweet and cozy. Your gaze make me lost in labyrinth of you, every step I take, I come closer toward you Unique. ", img: "./images/3.jpeg" },
-            { title: "Beach Day", date: "Jan 27, 2026", desc: "Salt in the air, sand in our hair. I don't know if you count this as a date or not but so you know I really love spending my time on beach with you Unique, I usually don't like a beach very much but because of you, now everytime my feet touch the grains of sand while looking at vast sea, I would always remember Unique.", img: "./images/4.jpeg" },
-            { title: "Spontaneous Moments", date: "Jan 12, 2026", desc: "This moment is so messy and so unpredictable, but I like it tho :p.", img: "./images/5.jpeg" }
+            { title: "Unofficial First Date", date: "Dec 6, 2025", desc: "Initially, I didn't fully grasp your definition of a date, so I was 'testing the water'. Even if it felt a bit rushed, I loved every second because I was with you.", img: "images/1.jpeg" },
+            { title: "The First Date", date: "Dec 27, 2025", desc: "Walking through Kayutangan, ice cream, hidden cafes, and sudden kisses. I fall in love every time I look at you.", img: "images/2.jpeg" },
+            { title: "Coffee Date", date: "Jan 10, 2026", desc: "A cozy morning where the coffee was warm but your smile was warmer. You are the center of my labyrinth.", img: "images/3.jpeg" },
+            { title: "Beach Day", date: "Jan 27, 2026", desc: "I used to be indifferent to beaches, but now every grain of sand reminds me of you. Being by the sea with you is magic.", img: "images/4.jpeg" },
+            { title: "Spontaneous Moment", date: "Jan 12, 2026", desc: "Messy, unpredictable, and perfectly us.", img: "images/5.jpeg" }
         ];
 
-        // GENERATE PHOTOS WITH ALPHABET CODES (A, B... Z, AA, AB...)
+        // --- Generate Gallery (80 images) ---
         let galleryImages = [];
         function getAlphaCode(n) {
             let code = "";
@@ -741,23 +673,22 @@
             return code;
         }
 
-        // Production ready: Loop creates items. Onerror fallback ensures GitHub deployment doesn't look broken.
         for (let i = 1; i <= 80; i++) {
             let code = getAlphaCode(i);
             galleryImages.push({
                 title: `Moment #${i}`,
                 date: "Forever",
-                img: `./images/${code}.jpeg`
+                img: `images/${code}.jpeg` // Relative path, no dots, standard casing
             });
         }
 
         const notes = [
-            { text: "Kamu tuh kyk matahari yang bersinar ke orang-orang disekitar kamu.", from: "Unique" },
-            { text: "Kalo Unique tuh kyk laut yang indah, dan dalam. Kadang ombaknya datang lalu kadang pergi tapi kamu selalu ada untuk aku disini", from: "Me" },
+            { text: "You're like the sun that shines on everyone around you.", from: "Unique" },
+            { text: "You're like the beautiful, deep sea. Sometimes waves come and go, but you're always here for me.", from: "Me" },
             { text: "Thank you for being my home in this crazy world.", from: "Your Valentine" }
         ];
 
-        // --- Rendering Logic ---
+        // --- Rendering ---
         const timelineContainer = document.getElementById('timeline-items');
         const track = document.getElementById('gallery-track');
         const viewport = document.getElementById('gallery-viewport');
@@ -771,7 +702,7 @@
                 item.innerHTML = `
                     <div class="timeline-node">❤</div>
                     <div class="timeline-content" onclick='openModal(${JSON.stringify(m).replace(/'/g, "&apos;")})'>
-                        <img src="${m.img}" class="timeline-img" onerror="this.src='${FALLBACK_IMAGE}'">
+                        <img src="${m.img}" class="timeline-img" onerror="this.src='${PLACEHOLDER_IMG}'">
                         <h3>${m.title}</h3>
                         <p style="color:var(--accent-bright); font-weight:bold;">${m.date}</p>
                     </div>`;
@@ -786,7 +717,7 @@
             tripleData.forEach(img => {
                 const item = document.createElement('div'); item.className = 'gallery-item';
                 item.onclick = () => openModal(img);
-                item.innerHTML = `<img src="${img.img}" onerror="this.src='${FALLBACK_IMAGE}'"><div class="gallery-overlay"><h3>${img.title}</h3></div>`;
+                item.innerHTML = `<img src="${img.img}" onerror="this.src='${PLACEHOLDER_IMG}'"><div class="gallery-overlay"><h3>${img.title}</h3></div>`;
                 track.appendChild(item);
             });
             viewport.scrollLeft = galleryImages.length * itemWidth;
@@ -810,11 +741,12 @@
 
         // --- Modals ---
         window.openModal = (data) => {
-            document.getElementById('modal-img').src = data.img;
-            document.getElementById('modal-img').onerror = function() { this.src = FALLBACK_IMAGE; };
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = data.img;
+            modalImg.onerror = function() { this.src = PLACEHOLDER_IMG; };
             document.getElementById('modal-title').innerText = data.title;
             document.getElementById('modal-date').innerText = data.date;
-            document.getElementById('modal-desc').innerText = data.desc || "A treasure in our journey together.";
+            document.getElementById('modal-desc').innerText = data.desc || "A treasure within our shared journey.";
             document.getElementById('modal').style.display = 'flex';
         };
 
@@ -842,7 +774,7 @@
             else if (viewport.scrollLeft <= 5) viewport.scrollLeft += (galleryImages.length * itemWidth);
         });
 
-        // --- Background Heart Animation ---
+        // --- Background Hearts ---
         const heartsCanvas = document.getElementById('hearts-canvas');
         const hCtx = heartsCanvas.getContext('2d');
         let heartsArr = [];
@@ -869,7 +801,7 @@
             requestAnimationFrame(anim);
         } anim();
 
-        // --- Music Controls ---
+        // --- Music ---
         const audio = document.getElementById('bg-music');
         let playing = false;
         document.getElementById('music-toggle').onclick = (e) => {
