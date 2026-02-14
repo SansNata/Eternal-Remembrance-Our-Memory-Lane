@@ -37,7 +37,7 @@
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
-            cursor: none; /* Custom cursor handling */
+            cursor: none; 
         }
 
         h1, h2, h3 {
@@ -128,10 +128,11 @@
             z-index: 1;
             perspective: 1000px;
             overflow: hidden;
+            padding: 20px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(2.5rem, 10vw, 6rem);
             margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(230, 0, 0, 0.6);
             transition: transform 0.2s ease-out;
@@ -143,7 +144,7 @@
             padding: 15px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
             text-decoration: none;
@@ -160,7 +161,7 @@
 
         /* --- Timeline Section --- */
         .timeline-section {
-            padding: 100px 20px;
+            padding: 60px 20px;
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
@@ -169,8 +170,8 @@
 
         .timeline-section h2 {
             text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 60px;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            margin-bottom: 40px;
         }
 
         .timeline-container {
@@ -259,7 +260,7 @@
 
         /* --- Gallery Slider --- */
         .gallery-section {
-            padding: 100px 0;
+            padding: 80px 0;
             background: rgba(26, 26, 26, 0.5);
             z-index: 1;
             position: relative;
@@ -272,32 +273,13 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 40px;
+            padding: 0 20px;
         }
 
         .gallery-section h2 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
             margin: 0;
-        }
-
-        .add-btn {
-            background: var(--accent-vibrant);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(230,0,0,0.4);
-        }
-
-        .add-btn:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: var(--accent-bright);
+            text-align: center;
         }
 
         .gallery-viewport {
@@ -305,6 +287,7 @@
             overflow: hidden;
             position: relative;
             cursor: grab;
+            touch-action: pan-y; /* Allows swiping but still lets page scroll vertically */
         }
 
         .gallery-track {
@@ -314,17 +297,13 @@
         }
 
         .gallery-item {
-            flex: 0 0 300px;
-            height: 400px;
+            flex: 0 0 280px; /* Sized down slightly for mobile screens */
+            height: 380px;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
         }
 
         .gallery-item img {
@@ -344,9 +323,35 @@
             transition: opacity 0.3s ease;
         }
 
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            background: var(--accent-vibrant);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
         /* --- Notes Section --- */
         .notes-section {
-            padding: 120px 20px;
+            padding: 80px 20px;
             background: radial-gradient(circle at center, #111 0%, #050505 100%);
             z-index: 1;
             position: relative;
@@ -358,8 +363,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
-            margin-top: 60px;
+            gap: 30px;
+            margin-top: 40px;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -368,21 +373,22 @@
 
         @keyframes floatGrid {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
         .stationary-note {
             background-color: var(--note-paper);
             color: #333;
-            width: 280px;
-            min-height: 200px;
-            padding: 40px 25px 25px;
+            width: 100%;
+            max-width: 280px;
+            min-height: 180px;
+            padding: 35px 20px 20px;
             position: relative;
             box-shadow: 5px 10px 25px rgba(0,0,0,0.5);
             transform: rotate(calc(var(--r) * 1deg));
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             line-height: 1.4;
             display: flex;
             flex-direction: column;
@@ -391,22 +397,20 @@
         }
 
         .stationary-note:hover {
-            transform: rotate(0deg) scale(1.15) translateY(-10px);
+            transform: rotate(0deg) scale(1.05);
             z-index: 50;
-            box-shadow: 0 20px 40px rgba(255, 51, 51, 0.3);
         }
 
         .stationary-note::before {
             content: "";
             position: absolute;
-            top: -15px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%) rotate(-2deg);
-            width: 100px;
-            height: 35px;
-            background: rgba(255, 51, 51, 0.25);
+            width: 80px;
+            height: 30px;
+            background: rgba(255, 51, 51, 0.2);
             backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 2;
         }
 
@@ -422,7 +426,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             backdrop-filter: blur(5px);
         }
 
@@ -431,7 +435,8 @@
             width: 100%;
             background: var(--card-bg);
             border-radius: 20px;
-            overflow: hidden;
+            overflow-y: auto;
+            max-height: 90vh;
             position: relative;
             box-shadow: 0 0 40px rgba(230, 0, 0, 0.3);
             display: flex;
@@ -440,31 +445,31 @@
         }
 
         @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.8); }
+            from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
 
         .modal-img {
             width: 100%;
-            max-height: 60vh;
+            max-height: 50vh;
             object-fit: cover;
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 20px;
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.5);
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
             color: white;
             border: none;
-            font-size: 2rem;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            font-size: 1.8rem;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
             text-align: center;
             border-radius: 50%;
             cursor: pointer;
@@ -474,47 +479,86 @@
         /* --- Music Player --- */
         .music-player {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             z-index: 100;
         }
 
         #music-toggle {
             background: var(--accent-vibrant);
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(230,0,0,0.5);
+            box-shadow: 0 0 15px rgba(230,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.3s;
         }
 
         footer {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background: #000;
             z-index: 1;
             position: relative;
         }
 
+        /* MOBILE FIXES */
         @media (max-width: 768px) {
-            body { cursor: auto; }
+            body { cursor: auto; } /* Re-enable default cursor for mobile touch */
             #custom-cursor { display: none; }
-            .timeline-line { left: 30px; }
+            
+            .timeline-line {
+                left: 20px; /* Move line to left */
+                transform: none;
+            }
+            
             .timeline-item {
                 justify-content: flex-start;
-                padding-left: 60px;
-                padding-right: 20px;
-                transform: translateX(30px) !important;
+                padding-left: 50px; /* Content space from the left line */
+                padding-right: 0;
+                transform: translateX(20px) !important;
+                margin-bottom: 40px;
             }
-            .timeline-node { left: 30px; }
-            .hero h1 { font-size: 3rem; }
+            
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+                transform: translateX(20px) !important;
+            }
+            
+            .timeline-node {
+                left: 0;
+                transform: none;
+                width: 30px;
+                height: 30px;
+            }
+            
+            .timeline-content {
+                margin: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            .gallery-header {
+                flex-direction: column;
+            }
+
+            .notes-grid {
+                gap: 20px;
+                animation: none; /* Reduce CPU load on mobile */
+            }
+
+            .stationary-note {
+                transform: rotate(calc(var(--r) * 0.5deg)); /* Less rotation on mobile */
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
@@ -526,8 +570,8 @@
 
     <section class="hero" id="hero">
         <h1 id="hero-title">Eternal Remembrance</h1>
-        <p style="margin-bottom: 30px; font-size: 1.2rem; z-index: 2;">Every second with you is a treasure.</p>
-        <a href="#timeline" class="hero-btn magnetic">Start the Journey</a>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; z-index: 2; opacity: 0.9;">Every second with you is a treasure.</p>
+        <a href="#timeline" class="hero-btn">Start the Journey</a>
     </section>
 
     <section id="timeline" class="timeline-section">
@@ -541,14 +585,14 @@
     <section class="gallery-section">
         <div class="gallery-header">
             <h2>Captured Moments</h2>
-            <button class="add-btn magnetic" id="open-add-modal" title="Add a new memory">+</button>
+            <button class="add-btn" id="open-add-modal" title="Add a new memory">+</button>
         </div>
         <div class="gallery-viewport" id="gallery-viewport">
             <div class="gallery-track" id="gallery-track"></div>
         </div>
         <div class="gallery-controls">
-            <button class="nav-btn magnetic" id="prev-btn">❮</button>
-            <button class="nav-btn magnetic" id="next-btn">❯</button>
+            <button class="nav-btn" id="prev-btn">❮</button>
+            <button class="nav-btn" id="next-btn">❯</button>
         </div>
     </section>
 
@@ -560,20 +604,19 @@
     </section>
 
     <div class="music-player">
-        <button id="music-toggle" class="magnetic">♫</button>
+        <button id="music-toggle">♫</button>
         <audio id="bg-music" loop>
-            <!-- GitHub: Standardizing lowercase paths -->
             <source src="images/0214.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- Modals -->
+    <!-- Photo Modal -->
     <div class="modal" id="modal">
         <button class="modal-close" id="modal-close">&times;</button>
         <div class="modal-content">
             <img src="" alt="" class="modal-img" id="modal-img">
             <div class="modal-body">
-                <h3 id="modal-title" style="font-size: 2.5rem; margin-bottom: 10px;"></h3>
+                <h3 id="modal-title" style="font-size: 2rem; margin-bottom: 10px;"></h3>
                 <p id="modal-date" style="color: var(--accent-bright); font-weight: bold; margin-bottom: 15px;"></p>
                 <p id="modal-desc"></p>
             </div>
@@ -598,20 +641,18 @@
                         <label style="display:block;color:var(--accent-bright);font-weight:600;">Date</label>
                         <input type="text" id="new-date" style="width:100%;padding:10px;background:#2a2a2a;color:white;border:1px solid #444;" required>
                     </div>
-                    <button type="submit" class="submit-btn magnetic" style="width:100%;">Save Memory</button>
+                    <button type="submit" class="submit-btn" style="width:100%;">Save Memory</button>
                 </form>
             </div>
         </div>
     </div>
 
     <footer>
-        <h2>To many more memories...</h2>
-        <p>&copy; 2026 For My Forever Valentine ❤️</p>
+        <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--accent-bright);">To many more memories...</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">&copy; 2026 For My Forever Valentine ❤️</p>
     </footer>
 
     <script>
-        // --- GitHub Pages Optimization ---
-        // Placeholder for missing images to keep GitHub deployment pretty
         const PLACEHOLDER_IMG = "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=60&w=600";
 
         // --- Core Interactivity ---
@@ -620,20 +661,23 @@
         const heroTitle = document.getElementById('hero-title');
         const hero = document.getElementById('hero');
 
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            if (Math.random() > 0.9) {
-                const trail = document.createElement('div');
-                trail.className = 'cursor-trail'; trail.innerHTML = '❤';
-                trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px';
-                document.body.appendChild(trail); setTimeout(() => trail.remove(), 1000);
-            }
-            const moveX = (e.clientX - window.innerWidth/2) / 30;
-            const moveY = (e.clientY - window.innerHeight/2) / 30;
-            if(heroTitle) heroTitle.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${-moveY/2}deg) rotateY(${moveX/2}deg)`;
-            if(hero) hero.style.backgroundPosition = `${50 + moveX/5}% ${50 + moveY/5}%`;
-        });
+        // Only use custom cursor if screen is large
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                if (Math.random() > 0.9) {
+                    const trail = document.createElement('div');
+                    trail.className = 'cursor-trail'; trail.innerHTML = '❤';
+                    trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px';
+                    document.body.appendChild(trail); setTimeout(() => trail.remove(), 1000);
+                }
+                const moveX = (e.clientX - window.innerWidth/2) / 30;
+                const moveY = (e.clientY - window.innerHeight/2) / 30;
+                if(heroTitle) heroTitle.style.transform = `translate(${moveX}px, ${moveY}px) rotateX(${-moveY/2}deg) rotateY(${moveX/2}deg)`;
+                if(hero) hero.style.backgroundPosition = `${50 + moveX/5}% ${50 + moveY/5}%`;
+            });
+        }
 
         document.addEventListener('mousedown', (e) => {
             for(let i=0; i<8; i++) {
@@ -661,7 +705,6 @@
             { title: "Spontaneous Moment", date: "Jan 12, 2026", desc: "Messy, unpredictable, and perfectly us.", img: "images/5.jpeg" }
         ];
 
-        // --- Generate Gallery (80 images) ---
         let galleryImages = [];
         function getAlphaCode(n) {
             let code = "";
@@ -678,7 +721,7 @@
             galleryImages.push({
                 title: `Moment #${i}`,
                 date: "Forever",
-                img: `images/${code}.jpeg` // Relative path, no dots, standard casing
+                img: `images/${code}.jpeg`
             });
         }
 
@@ -688,11 +731,11 @@
             { text: "Thank you for being my home in this crazy world.", from: "Your Valentine" }
         ];
 
-        // --- Rendering ---
+        // --- Rendering Logic ---
         const timelineContainer = document.getElementById('timeline-items');
         const track = document.getElementById('gallery-track');
         const viewport = document.getElementById('gallery-viewport');
-        const itemWidth = 320;
+        const itemWidth = (window.innerWidth < 768) ? 300 : 320; // Match CSS gallery item width + gap
 
         function renderTimeline() {
             timelineContainer.innerHTML = '';
@@ -748,9 +791,14 @@
             document.getElementById('modal-date').innerText = data.date;
             document.getElementById('modal-desc').innerText = data.desc || "A treasure within our shared journey.";
             document.getElementById('modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         };
 
-        document.getElementById('modal-close').onclick = () => document.getElementById('modal').style.display = 'none';
+        document.getElementById('modal-close').onclick = () => {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
         document.getElementById('open-add-modal').onclick = () => document.getElementById('add-modal').style.display = 'flex';
         document.getElementById('add-modal-close').onclick = () => document.getElementById('add-modal').style.display = 'none';
 
@@ -765,9 +813,36 @@
             document.getElementById('add-modal').style.display = 'none';
         };
 
-        // --- Gallery Control ---
+        // --- Gallery Control & Swiping ---
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        viewport.addEventListener('mousedown', (e) => {
+            isDown = true; startX = e.pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft;
+        });
+        viewport.addEventListener('mouseleave', () => isDown = false);
+        viewport.addEventListener('mouseup', () => isDown = false);
+        viewport.addEventListener('mousemove', (e) => {
+            if(!isDown) return; e.preventDefault();
+            const x = e.pageX - viewport.offsetLeft; const walk = (x - startX) * 2;
+            viewport.scrollLeft = scrollLeft - walk;
+        });
+
+        // Touch swiping
+        viewport.addEventListener('touchstart', (e) => {
+            isDown = true; startX = e.touches[0].pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft;
+        });
+        viewport.addEventListener('touchend', () => isDown = false);
+        viewport.addEventListener('touchmove', (e) => {
+            if(!isDown) return;
+            const x = e.touches[0].pageX - viewport.offsetLeft; const walk = (x - startX) * 1.5;
+            viewport.scrollLeft = scrollLeft - walk;
+        });
+
         document.getElementById('next-btn').onclick = () => viewport.scrollBy({ left: itemWidth, behavior: 'smooth' });
         document.getElementById('prev-btn').onclick = () => viewport.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+
         viewport.addEventListener('scroll', () => {
             const max = viewport.scrollWidth - viewport.clientWidth;
             if (viewport.scrollLeft >= max - 5) viewport.scrollLeft -= (galleryImages.length * itemWidth);
